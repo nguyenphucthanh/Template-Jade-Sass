@@ -171,7 +171,8 @@ module.exports = function(grunt) {
     },
     watch: {
       options: {
-        livereload: true
+        //livereload: true
+        spawn: false
       },
       scripts: {
         options: {
@@ -194,7 +195,7 @@ module.exports = function(grunt) {
       },
       sass: {
         files: ['source/assets/css/**/*.scss'],
-        tasks: ['scss', 'csslint']
+        tasks: ['sass', 'csslint']
       },
       fonts: {
         files: ['source/assets/fonts/**/*'],
@@ -271,22 +272,6 @@ module.exports = function(grunt) {
         }]
       }
     },
-    nodemon: {
-      local: {
-        script: 'source/server.js'
-      }
-    },
-    concurrent: {
-      options: {
-        limit: 4
-      },
-      local: {
-        tasks: ['nodemon:local', 'watch'],
-        options: {
-          logConcurrentOutput: true
-        }
-      }
-    },
     plato: {
       options: {
         jshint: grunt.file.readJSON('.jshintrc')
@@ -320,10 +305,23 @@ module.exports = function(grunt) {
     },
     clean: {
       build: ['public']
+    },
+    browserSync: {
+      bsFiles: {
+        src: [
+          'public/**/*'
+        ]
+      },
+      options: {
+        server: 'public/',
+        watchTask: true,
+        online: true
+      }
     }
   });
+
   grunt.file.expand('./node_modules/grunt-*/tasks').forEach(grunt.loadTasks);
-  grunt.registerTask('default', ['clean', 'concat', 'sass', 'jade', 'copy', 'htmlhint', 'jshint', 'csslint', 'concurrent:local']);
+  grunt.registerTask('default', ['clean', 'concat', 'sass', 'jade', 'copy', 'htmlhint', 'jshint', 'csslint', 'browserSync', 'watch']);
   grunt.registerTask('build', ['default']);
   grunt.registerTask('test', ['connect:server', 'qunit']);
   grunt.registerTask('wai', ['accessibility']);

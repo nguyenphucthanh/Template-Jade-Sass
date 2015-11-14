@@ -1,5 +1,5 @@
 var L10n = {
-  group: {
-    key: 'value'
-  }
+    group: {
+        key: 'value'
+    }
 };

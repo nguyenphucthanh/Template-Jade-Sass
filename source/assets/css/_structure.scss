@@ -28,6 +28,7 @@
     }
   }
 }
+
 #sidebar {
   float: left;
   padding: 10px;
@@ -37,6 +38,7 @@
   @include border-radius(3px);
   @include box-shadow(0 1px 1px);
 }
+
 #main {
   float: right;
   padding: 10px;
@@ -46,6 +48,7 @@
   @include border-radius(3px);
   @include box-shadow(0 1px 1px);
 }
+
 #footer {
   padding: 10px;
   background: #f7f7f7;

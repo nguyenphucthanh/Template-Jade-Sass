@@ -2,15 +2,19 @@
 .float-l {
   float: left;
 }
+
 .float-r {
   float: right;
 }
+
 .hidden {
   display: none;
 }
+
 .invisible {
   visibility: hidden;
 }
+
 noscript {
   position: fixed;
   top: 0;
@@ -21,6 +25,7 @@ noscript {
   text-align: center;
   @include opacity(0.75);
 }
+
 .browsehappy {
   position: fixed;
   bottom: 0;
